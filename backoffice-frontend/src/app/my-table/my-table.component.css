@@ -1,0 +1,11 @@
+
+table{
+    width: 100%;
+}
+
+input[data-type="id"],input[data-type="name"]{
+    pointer-events: none;
+    width: auto;
+
+}
+

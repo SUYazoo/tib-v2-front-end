@@ -1,0 +1,235 @@
+
+ <div>
+<!-- LISTE POISSON -->
+    <table mat-table [hidden]="show0" [dataSource]="dataSource0" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element">{{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Nom">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element">{{element.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Prix">
+      <th mat-header-cell *matHeaderCellDef> Prix </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Prix en promo">
+      <th mat-header-cell *matHeaderCellDef> Prix en promo </th>
+      <td mat-cell *matCellDef="let element"> {{element.price_on_sale}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="En promotion">
+      <th mat-header-cell *matHeaderCellDef> En promotion </th>
+      <td mat-cell *matCellDef="let element"> {{element.sale}} </td>
+    </ng-container>
+  
+     <ng-container matColumnDef="% Promo">
+      <th mat-header-cell *matHeaderCellDef> Pourcentage de promotion </th>
+      <td mat-cell *matCellDef="let element" > {{element.discount}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Saisie Promo">
+      <th mat-header-cell *matHeaderCellDef> Veuillez saisir un Pourcentage</th>
+      <td mat-cell *matCellDef="let element">
+        <input  (keyup)="onKeyPromo($event)" type="number" step="0.1" style="width : 50px ; text-align : center" [(ngModel)]='inputPromoValue'>
+        <button mat-button (click)="modifyPromotion(element)">Modifier</button>
+      </td>
+    </ng-container>
+
+  
+     <ng-container matColumnDef="Quantité en stock">
+      <th mat-header-cell *matHeaderCellDef> Quantité en stock </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantityInStock}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Saisie Stock">
+      <th mat-header-cell *matHeaderCellDef> Veuillez saisir un nombre</th>
+      <td mat-cell *matCellDef="let element">
+          <input (keyup)="onKeyStock($event)"  style="width : 50px ; text-align : center" [(ngModel)]='inputStockValue'>
+        <button mat-button (click)="addQuantityStock(element)">Ajouter</button>
+        <button mat-button (click)="subQuantityStock(element)">Enlever</button>
+      </td>
+    </ng-container>
+  
+     <ng-container matColumnDef="Nb Article Vendu">
+      <th mat-header-cell *matHeaderCellDef> Nb article Vendu </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity_sold}} </td>
+    </ng-container>
+  
+     <ng-container matColumnDef="Commentaire">
+      <th mat-header-cell *matHeaderCellDef> Commentaire </th>
+      <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+    </ng-container>
+
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<br>
+
+
+
+
+
+<div>
+  <!-- LISTE FRUITS DE MER -->
+      <table mat-table [hidden]="show0" [dataSource]="dataSource1" class="mat-elevation-z8">
+    
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element">{{element.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Nom">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element">{{element.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Prix">
+        <th mat-header-cell *matHeaderCellDef> Prix </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Prix en promo">
+        <th mat-header-cell *matHeaderCellDef> Prix en promo </th>
+        <td mat-cell *matCellDef="let element"> {{element.price_on_sale}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="En promotion">
+        <th mat-header-cell *matHeaderCellDef> En promotion </th>
+        <td mat-cell *matCellDef="let element"> {{element.sale}} </td>
+      </ng-container>
+    
+       <ng-container matColumnDef="% Promo">
+        <th mat-header-cell *matHeaderCellDef> Pourcentage de promotion </th>
+        <td mat-cell *matCellDef="let element" > {{element.discount}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="Saisie Promo">
+        <th mat-header-cell *matHeaderCellDef> Veuillez saisir un Pourcentage</th>
+        <td mat-cell *matCellDef="let element">
+          <input  (keyup)="onKeyPromo($event)" 
+            type="number" step="0.1" style="width : 50px ; text-align : center" 
+            [(ngModel)]='inputPromoValue'>
+          <button mat-button (click)="modifyPromotion(element)">Modifier</button>
+        </td>
+      </ng-container>
+  
+    
+       <ng-container matColumnDef="Quantité en stock">
+        <th mat-header-cell *matHeaderCellDef> Quantité en stock </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantityInStock}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Saisie Stock">
+        <th mat-header-cell *matHeaderCellDef> Veuillez saisir un nombre</th>
+        <td mat-cell *matCellDef="let element">
+            <input (keyup)="onKeyStock($event)"  style="width : 50px ; text-align : center" 
+            [(ngModel)]='inputStockValue'>
+          <button mat-button (click)="addQuantityStock(element)">Ajouter</button>
+          <button mat-button (click)="subQuantityStock(element)">Enlever</button>
+        </td>
+      </ng-container>
+    
+       <ng-container matColumnDef="Nb Article Vendu">
+        <th mat-header-cell *matHeaderCellDef> Nb article Vendu </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity_sold}} </td>
+      </ng-container>
+    
+       <ng-container matColumnDef="Commentaire">
+        <th mat-header-cell *matHeaderCellDef> Commentaire </th>
+        <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+      </ng-container>
+  
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <br>
+  
+  
+
+
+
+<div>
+  <!-- LISTE CRUSTACES -->
+      <table mat-table [hidden]="show0" [dataSource]="dataSource2" class="mat-elevation-z8">
+    
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element">{{element.id}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Nom">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element">{{element.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Prix">
+        <th mat-header-cell *matHeaderCellDef> Prix </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Prix en promo">
+        <th mat-header-cell *matHeaderCellDef> Prix en promo </th>
+        <td mat-cell *matCellDef="let element"> {{element.price_on_sale}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="En promotion">
+        <th mat-header-cell *matHeaderCellDef> En promotion </th>
+        <td mat-cell *matCellDef="let element"> {{element.sale}} </td>
+      </ng-container>
+    
+       <ng-container matColumnDef="% Promo">
+        <th mat-header-cell *matHeaderCellDef> Pourcentage de promotion </th>
+        <td mat-cell *matCellDef="let element" > {{element.discount}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="Saisie Promo">
+        <th mat-header-cell *matHeaderCellDef> Veuillez saisir un Pourcentage</th>
+        <td mat-cell *matCellDef="let element">
+          <input  (keyup)="onKeyPromo($event)" type="number" step="0.1" style="width : 50px ; text-align : center" [(ngModel)]='inputPromoValue'>
+          <button mat-button (click)="modifyPromotion(element)">Modifier</button>
+        </td>
+      </ng-container>
+  
+    
+       <ng-container matColumnDef="Quantité en stock">
+        <th mat-header-cell *matHeaderCellDef> Quantité en stock </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantityInStock}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Saisie Stock">
+        <th mat-header-cell *matHeaderCellDef> Veuillez saisir un nombre</th>
+        <td mat-cell *matCellDef="let element">
+            <input (keyup)="onKeyStock($event)"  style="width : 50px ; text-align : center" [(ngModel)]='inputStockValue'>
+          <button mat-button (click)="addQuantityStock(element)">Ajouter</button>
+          <button mat-button (click)="subQuantityStock(element)">Enlever</button>
+        </td>
+      </ng-container>
+    
+       <ng-container matColumnDef="Nb Article Vendu">
+        <th mat-header-cell *matHeaderCellDef> Nb article Vendu </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity_sold}} </td>
+      </ng-container>
+    
+       <ng-container matColumnDef="Commentaire">
+        <th mat-header-cell *matHeaderCellDef> Commentaire </th>
+        <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+      </ng-container>
+  
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <br>
+  
+  

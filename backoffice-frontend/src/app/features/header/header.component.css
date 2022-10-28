@@ -1,0 +1,11 @@
+ul {
+    background-color: green;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    width: 400px;
+  }
+  
+  li {
+    flex-grow: 1;
+  }
